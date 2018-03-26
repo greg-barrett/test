@@ -1,0 +1,10 @@
+
+<% if !@sent_requests.empty? %>
+<h1>Pending Friend Requests.</h1>
+  <% @sent_requests.each do |requester| %>
+    <p><%= requester.name %></p>
+    <% end %>
+<% else %>
+  <p>You don't have any pending friend requests.</br>
+   To see a list of your friends click <%= link_to "here", friends_path %></p>
+<% end %>

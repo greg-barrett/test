@@ -1,0 +1,22 @@
+<h1>Post</h1>
+<div class="posts">
+  <%= @post.content %></br>
+  <%= @post.author.name %></br>
+  <%= "Number of Likes: #{@post.likes.count}" %>
+  <%= render 'post_likes/form' %>
+</div>
+
+<%= render 'comments/form' %>
+<h2>Comments</h2>
+<% if !@comments.empty? %>
+
+    <% @comments.each do |comment| %>
+  <div class="comments">
+    <%= link_to comment.author.name, comment.author %> says...
+    <%= comment.content %></br>
+    <%= "Number of Likes: #{comment.likes.count}" %>
+    <%= render 'comment_likes/form', :locals => {:comment_id => comment.id} %>
+  </div></br>
+    <% end %>
+
+<% end %>

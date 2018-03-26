@@ -1,0 +1,57 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+.posts, .comments, .index {
+  background-color: #5cdb95;
+  border-style: solid;
+  border-color: #379683;
+  border-width: thin;
+  padding: 10px;
+  }
+
+body {
+  background-color:#edf5e1;
+  color: #05386B;
+
+  font-family: monospace, courier-new;
+
+  }
+
+  /* Add a black background color to the top navigation */
+ .topnav {
+     background-color: #8EE4AF;
+     overflow: hidden;
+ }
+
+ /* Style the links inside the navigation bar */
+ .topnav a {
+     float: left;
+     display: block;
+     text-align: center;
+     padding: 14px 16px;
+     text-decoration: none;
+     font-size: 17px;
+ }
+
+ /* Change the color of links on hover */
+ .topnav a:hover {
+     background-color: #EDF5E1;
+     color: black;
+ }
+
+ /* Hide the link that should open and close the topnav on small screens */
+ .topnav .icon {
+     display: none;
+ }

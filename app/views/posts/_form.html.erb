@@ -1,0 +1,6 @@
+
+
+<%= form_for(@post, url: user_posts_url(current_user)) do |f| %>
+  <%= f.text_area :content, size: "60x6", placeholder: 'I...' %></br>
+<%= f.submit "Post" %>
+<% end %>

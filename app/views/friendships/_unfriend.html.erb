@@ -1,0 +1,5 @@
+<%= form_for(current_user.friendships.find_by(friendee_id: local_assigns[:locals][:friendee_id]),
+             html: { method: :delete }) do |f| %>
+  <%= f.hidden_field :friendee_id, value: local_assigns[:locals][:friendee_id] %>
+  <%= f.submit "Unfriend", class: "btn" %>
+<% end %>

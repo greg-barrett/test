@@ -1,0 +1,7 @@
+<%= form_for(@comment_like) do |f| %>
+
+  <%= f.hidden_field :user_id, value: current_user.id %></br>
+  <%= f.hidden_field :comment_id, value: local_assigns[:locals][:comment_id] %></br>
+
+<%= f.submit "Like" %>
+<% end %>

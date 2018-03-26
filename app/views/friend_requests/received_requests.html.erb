@@ -1,0 +1,10 @@
+<h1>Pending Friend Request.</h1>
+<% if !@received_requests.empty? %>
+  <% @received_requests.each do |requester| %>
+  <p>  <%= requester.name %></p>
+    <%= render 'friendships/form',  :locals => {:requester_id => requester.id} %></br>
+  <% end %>
+<% else %>
+  <p>You don't have any pending friend requests.</br>
+   To find people you may know go to <%= link_to "All Users", users_path %></p>
+<% end %>

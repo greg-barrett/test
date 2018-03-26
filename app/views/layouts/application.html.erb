@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FacebookApp</title>
+    <%= debug(params) if Rails.env.development? %>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="topnav" id="myTopnav">
+      <% if signed_in? %>
+        <%= link_to "Home", user_posts_path(current_user) %>
+        <%= link_to "My Profile", myprofile_path %>
+        <%= link_to "Write a Post", new_user_post_path(current_user) %>
+        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+        <%= link_to "All Users", users_path %>
+        <%= link_to "Friends", friends_path  %>
+        <%= link_to "Sent Friend Requests", sent_friend_requests_path %>
+        <%= link_to "Received Friends", received_friend_requests_path %>
+      <% else %>
+      <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+        <%= link_to "Sign in", new_user_session_url %>
+        <%= link_to "Sign up", new_user_registration_url %>
+      <% end %>
+    </div>
+
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </body>
+</html>

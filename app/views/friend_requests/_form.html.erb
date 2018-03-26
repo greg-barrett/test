@@ -1,0 +1,7 @@
+<%= form_for(@friend_request) do |f| %>
+
+  <%= f.hidden_field :requester_id, value: current_user.id %>
+  <%= f.hidden_field :requested_id, value: local_assigns[:locals][:requested_id] %>
+
+<%= f.submit "Send Friend Request" %>
+<% end %>

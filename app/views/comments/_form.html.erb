@@ -1,0 +1,11 @@
+<p>What do you think?</p>
+
+<%= form_for(@comment) do |f| %>
+  <%= f.label :content %></br>
+  <%= f.text_area :content %>
+
+  <%= f.hidden_field :author_id, value: params[:user_id] %></br>
+  <%= f.hidden_field :post_id, value: params[:id] %></br>
+
+<%= f.submit %>
+<% end %>

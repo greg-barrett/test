@@ -1,0 +1,21 @@
+<h1>All Users</h1>
+
+<% @users.each do |user| %>
+<div class="index">
+<p><%= link_to user.name, user_path(user) %></p>
+  <% if current_user.is?(user) %>
+    <%= link_to "My Profile", myprofile_path %>
+
+  <% elsif current_user.received_request_pending?(user) %>
+    <%= render 'friendships/form',  :locals => {:requester_id => user.id} %>
+  <% elsif current_user.sent_request_pending?(user) %>
+
+    <%= "Friend request pending." %>
+  <% elsif current_user.friends?(user) %>
+    <%= render 'friendships/unfriend', :locals => {:friendee_id => user.id} %>
+  <% else %>
+    <%= render 'friend_requests/form', :locals => {:requested_id => user.id} %>
+  <% end %>
+</div>
+</br>
+<% end %>

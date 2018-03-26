@@ -1,0 +1,12 @@
+<h1><%= @user.name %></h1>
+
+
+
+<% @posts.each do |post| %>
+  <div class="posts">
+  <p><%= post.content %></p>
+  <%= "Likes: #{post.likes.count}" %></br>
+  <p><%="Posted: #{post.created_at.to_formatted_s(:long)}" %></p>
+  </div>
+</br>
+<% end %>
