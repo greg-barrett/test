@@ -42,6 +42,10 @@ class User < ApplicationRecord
     self.pending_frienders.include?(user)
   end
 
+  def notifactions?
+    pending_frienders.count
+  end
+
   def sent_request_pending?(user)
     self.pending_friendees.include?(user)
   end

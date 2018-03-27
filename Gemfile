@@ -32,9 +32,7 @@ gem 'bcrypt', '~> 3.1.11', platforms: [:ruby, :x64_mingw, :mingw]
 gem 'omniauth-facebook'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
 gem 'devise'
-
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
