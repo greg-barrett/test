@@ -14,7 +14,18 @@ class UsersController < ApplicationController
     @posts=@user.authored_posts
   end
 
+  def update
+    @user=current_user
+    if @user.update_attributes(user_params)
+      flash[:success]="Successfully updated"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
   def my_profile
+    @post=Post.new
     @user=current_user
     @posts=@user.authored_posts
   end
@@ -24,6 +35,10 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
     flash[:danger]="You must be friends to view someones profile."
     redirect_to(root_url) unless current_user.friends.include?(@user)
+  end
+
+  def user_params
+    params.require(:user).permit(:image, :image_cache, :remove_image)
   end
 
 end

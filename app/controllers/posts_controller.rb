@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def create
     @post=current_user.authored_posts.build(post_params)
-    redirect_to user_post_url(current_user, @post) if @post.save
+    redirect_to user_posts_path if @post.save
   end
 
   def show
@@ -19,6 +19,8 @@ class PostsController < ApplicationController
   end
 
   def index
+    @post=Post.new
+    @post_like=PostLike.new
     friend_ids = "SELECT friendee_id FROM friendships
                      WHERE  friender_id = :user_id"
     @posts= Post.where("author_id IN (#{friend_ids})

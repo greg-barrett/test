@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180326084639) do
+ActiveRecord::Schema.define(version: 20180327075547) do
 
   create_table "comment_likes", force: :cascade do |t|
     t.integer "comment_id"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20180326084639) do
     t.string "last_sign_in_ip"
     t.string "provider"
     t.string "uid"
+    t.string "image"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

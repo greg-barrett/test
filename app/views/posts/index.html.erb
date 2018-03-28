@@ -1,14 +1,17 @@
-<h1>Recent activity...</h1>
+<h2>What's on your mind?</h2>
+<%= render 'posts/form' %>
+<h2>Recent posts</h2>
 
 
 <% @posts.each do |post| %>
-<%= link_to user_post_path(post.author, post) do %>
   <div class="posts">
+<%= link_to user_post_path(post.author, post) do %>
+
   <p><%= post.content %></p>
   <%= "Likes: #{post.likes.count}" %></br>
   <p><%= post.author.name  %></p>
   <p><%="Posted: #{post.created_at.to_formatted_s(:long)}" %></p>
-  </div>
-</br>
 <% end %>
+<%= render 'post_likes/form', :locals => {:post_id => post.id} %>
+  </div>
 <% end %>

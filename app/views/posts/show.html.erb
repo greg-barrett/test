@@ -1,7 +1,8 @@
 <h1>Post</h1>
 <div class="posts">
-  <%= @post.content %></br>
+  <%= image_tag @post.author.image.thumb.url %>
   <%= @post.author.name %></br>
+  <%= @post.content %></br>
   <%= "Number of Likes: #{@post.likes.count}" %>
   <%= render 'post_likes/form' %>
 </div>

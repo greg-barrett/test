@@ -1,6 +1,11 @@
 <h1>Welcome <%= @user.name %> </h1>
+<%= link_to "Edit Profile", edit_user_registration_path(@user)  %>
+<p>
+  <%= image_tag @user.image.main.url %>
+</p>
+<%= render 'users/image_upload' %>
 
-
+<%= render 'posts/form' %>
 
 <% @posts.each do |post| %>
   <div class="posts">
