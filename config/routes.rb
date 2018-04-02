@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => "my_registrations" }
+
   resources :users do
     resources :posts
   end
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   get '/received_friend_requests', to: 'friend_requests#received_requests'
   get '/friends', to: 'friendships#friends'
   get 'myprofile', to: 'users#my_profile'
-  root 'posts#index'
+  root 'users#index'
+
 
 end

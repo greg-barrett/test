@@ -1,7 +1,10 @@
 <h1>Pending Friend Request.</h1>
 <% if !@received_requests.empty? %>
   <% @received_requests.each do |requester| %>
+    <%= image_tag requester.image.url %>
+
   <p>  <%= requester.name %></p>
+  Received <%= time_ago_in_words(requester.created_at) %> ago.
     <%= render 'friendships/form',  :locals => {:requester_id => requester.id} %></br>
   <% end %>
 <% else %>

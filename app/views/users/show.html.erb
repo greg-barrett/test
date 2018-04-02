@@ -1,14 +1,15 @@
 <h1><%= @user.name %></h1>
 <p>
-  <%= image_tag @user.image.main.url %>
+  <%= image_tag @user.image.url  %>
 </p>
 
 
 <% @posts.each do |post| %>
   <div class="posts">
   <p><%= post.content %></p>
+  <%= render 'post_likes/form', :locals => {:post_id => post.id} unless post.liked?(current_user) %>
   <%= "Likes: #{post.likes.count}" %></br>
-  <p><%="Posted: #{post.created_at.to_formatted_s(:long)}" %></p>
+<p>Posted <%= time_ago_in_words(post.created_at) %> ago.</p>
   </div>
 </br>
 <% end %>

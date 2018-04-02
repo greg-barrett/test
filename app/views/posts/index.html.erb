@@ -6,12 +6,12 @@
 <% @posts.each do |post| %>
   <div class="posts">
 <%= link_to user_post_path(post.author, post) do %>
-
+  <%= image_tag post.author.image.url  %>
   <p><%= post.content %></p>
   <%= "Likes: #{post.likes.count}" %></br>
   <p><%= post.author.name  %></p>
-  <p><%="Posted: #{post.created_at.to_formatted_s(:long)}" %></p>
+  <p>Posted <%= time_ago_in_words(post.created_at) %> ago.</p>
 <% end %>
-<%= render 'post_likes/form', :locals => {:post_id => post.id} %>
+<%= render 'post_likes/form', :locals => {:post_id => post.id} unless post.liked?(current_user) %>
   </div>
 <% end %>

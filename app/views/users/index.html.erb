@@ -2,7 +2,8 @@
 
 <% @users.each do |user| %>
 <div class="index">
-<p><%= link_to user.name, user_path(user) %></p>
+  <%= image_tag user.image.url %>
+  <p><%= link_to user.name, user_path(user) %></p>
   <% if current_user.is?(user) %>
     <%= link_to "My Profile", myprofile_path %>
 

@@ -1,5 +1,7 @@
 class PostLikesController < ApplicationController
   before_action :authenticate_user!
+
+
   def new
   end
 
@@ -7,6 +9,7 @@ class PostLikesController < ApplicationController
     @like=PostLike.create(post_like_params)
     redirect_to request.referrer
   end
+
 
   private
 

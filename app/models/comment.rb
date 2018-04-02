@@ -6,4 +6,8 @@ class Comment < ApplicationRecord
   #comment.likes- number of likes
   has_many :likers, through: 'likes', source: 'user'
   #comment.likers=users how liked it
+
+  def liked?(user)
+    likers.include?(user)
+  end
 end

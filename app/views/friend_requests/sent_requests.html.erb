@@ -2,7 +2,10 @@
 <% if !@sent_requests.empty? %>
 <h1>Pending Friend Requests.</h1>
   <% @sent_requests.each do |requester| %>
+  <%= image_tag requester.image.url %>
+
     <p><%= requester.name %></p>
+    Sent <%= time_ago_in_words(requester.created_at) %> ago.
     <% end %>
 <% else %>
   <p>You don't have any pending friend requests.</br>

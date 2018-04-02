@@ -36,6 +36,7 @@ gem 'devise'
 
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
+gem 'fog', '1.42'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

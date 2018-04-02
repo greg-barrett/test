@@ -11,7 +11,9 @@ class UsersController < ApplicationController
 
   def show
     @user=User.find(params[:id])
+
     @posts=@user.authored_posts
+    @post_like=PostLike.new
   end
 
   def update
@@ -33,8 +35,10 @@ class UsersController < ApplicationController
   private
   def friends?
     @user=User.find(params[:id])
-    flash[:danger]="You must be friends to view someones profile."
-    redirect_to(root_url) unless current_user.friends.include?(@user)
+    unless current_user.friends.include?(@user)
+      flash[:danger]="You must be friends to view someones profile."
+      redirect_to(users_url)
+    end
   end
 
   def user_params

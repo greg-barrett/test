@@ -1,8 +1,9 @@
 <%= form_for(@user) do |f| %>
   <div class="field">
-    <%= f.file_field :image %>
+    <%= f.label :Update_photo %></br>
+    <%= f.file_field :image %></br>
   </div>
   <div class="actions">
-    <%= f.submit "Change Photo" %>
+    <%= f.submit "Change Photo" %></br>
   </div>
 <% end %>

@@ -8,4 +8,8 @@ class Post < ApplicationRecord
   has_many :likers, through: 'likes', source: 'user'
   #post.likers=users how liked it
   default_scope -> { order(created_at: :desc) }
+
+  def liked?(user)
+    likers.include?(user)
+  end
 end

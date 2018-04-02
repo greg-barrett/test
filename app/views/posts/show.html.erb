@@ -1,10 +1,12 @@
 <h1>Post</h1>
 <div class="posts">
-  <%= image_tag @post.author.image.thumb.url %>
+  <%= image_tag @post.author.image.url  %>
   <%= @post.author.name %></br>
   <%= @post.content %></br>
+  <p>Posted <%= time_ago_in_words(@post.created_at) %> ago.</p>
   <%= "Number of Likes: #{@post.likes.count}" %>
-  <%= render 'post_likes/form' %>
+<%= render 'post_likes/form', :locals => {:post_id => @post.id} unless @post.liked?(current_user) %>
+
 </div>
 
 <%= render 'comments/form' %>
@@ -13,10 +15,12 @@
 
     <% @comments.each do |comment| %>
   <div class="comments">
+    <%= image_tag comment.author.image.url  %></br>
     <%= link_to comment.author.name, comment.author %> says...
     <%= comment.content %></br>
     <%= "Number of Likes: #{comment.likes.count}" %>
-    <%= render 'comment_likes/form', :locals => {:comment_id => comment.id} %>
+    <p>Commented <%= time_ago_in_words(comment.created_at) %> ago.</p>
+    <%= render 'comment_likes/form', :locals => {:comment_id => comment.id} unless comment.liked?(current_user) %>
   </div></br>
     <% end %>
 
